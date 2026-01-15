@@ -1,0 +1,52 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{YTMstyle}[2026/01/15 v1.0]
+
+% Language settings
+\newif\if@zhcn
+\newif\if@enus
+
+\@zhcnfalse
+\@enustrue
+
+\DeclareOption{zh-cn}{
+  \@zhcntrue
+  \@enusfalse
+}
+
+\DeclareOption{en-us}{
+  \@enustrue
+  \@zhcnfalse
+}
+
+\ProcessOptions\relax
+
+% Language and encoding
+\if@zhcn
+  \RequirePackage[UTF8]{ctex}
+\fi
+
+% Math packages
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{amsthm}
+
+\if@zhcn
+    \newtheorem{theorem}{定理}[section]
+    \newtheorem{lemma}[theorem]{引理}
+    \newtheorem{corollary}[theorem]{推论}
+    \newtheorem{definition}{定义}[section]
+    \newtheorem{example}{例子}[section]
+\fi
+\if@enus
+    \newtheorem{theorem}{Theorem}[section]
+    \newtheorem{lemma}[theorem]{Lemma}
+    \newtheorem{corollary}[theorem]{Corollary}
+    \newtheorem{definition}{Definition}[section]
+    \newtheorem{example}{Example}[section]
+\fi
+
+% Graphics packages
+\RequirePackage{graphicx}
+
+\endinput
