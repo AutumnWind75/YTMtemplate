@@ -4,11 +4,9 @@
 % options
 \newif\if@zhcn
 \newif\if@enus
-\newif\if@coloredtheorem
 
 \@zhcnfalse
 \@enustrue
-\@coloredtheoremfalse
 
 \DeclareOption{zh-cn}{
   \@zhcntrue
@@ -17,9 +15,6 @@
 \DeclareOption{en-us}{
   \@enustrue
   \@zhcnfalse
-}
-\DeclareOption{coloredtheorem}{
-  \@coloredtheoremtrue
 }
 
 \ProcessOptions\relax
@@ -34,60 +29,58 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 \RequirePackage{amsthm}
+\RequirePackage{physics}
 
 \if@zhcn
-    \newtheorem{theorem}{定理}[section]
-    \newtheorem{lemma}[theorem]{引理}
-    \newtheorem{corollary}[theorem]{推论}
-    \newtheorem{definition}{定义}[section]
-    \newtheorem{example}{例子}[section]
+  \newtheorem{theorem}{定理}[section]
+  \newtheorem{lemma}[theorem]{引理}
+  \newtheorem{corollary}[theorem]{推论}
+  \newtheorem{definition}{定义}[section]
+  \newtheorem{example}{例子}[section]
 \fi
 \if@enus
-    \newtheorem{theorem}{Theorem}[section]
-    \newtheorem{lemma}[theorem]{Lemma}
-    \newtheorem{corollary}[theorem]{Corollary}
-    \newtheorem{definition}{Definition}[section]
-    \newtheorem{example}{Example}[section]
+  \newtheorem{theorem}{Theorem}[section]
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{corollary}[theorem]{Corollary}
+  \newtheorem{definition}{Definition}[section]
+  \newtheorem{example}{Example}[section]
 \fi
 
 % colored theorems
-\if@coloredtheorem
-  \RequirePackage{tcolorbox}
-  \RequirePackage{thmtools}
-  \RequirePackage{coloredtheorem}
-  \definecolor{lightblue}{RGB}{80, 80, 210}
-  \if@zhcn
-    \cthnewtheorem{definition}{定义}[coltitle=black, colback=yellow!10,
-    colframe=orange!75]
-    \cthnewtheorem{lemma}{引理}[coltitle=black, colback=yellow!10,
-    colframe=pink!75]
-    \cthnewtheorem{theorem}{定理}[coltitle=black, colback=yellow!10,
-    colframe=magenta!75]
-    \cthnewtheorem{remark}{备注}[coltitle=black, colback=yellow!10,
-    colframe=purple!75]
-    \cthnewtheorem{corollary}{推论}[coltitle=black, colback=yellow!10,
-    colframe=purple!75]
-    \cthnewtheorem{proof}{证明}[coltitle=black, colback=yellow!10,
-    colframe=lightblue!75]
-    \cthnewtheorem{example}{例子}[coltitle=black, colback=yellow!10,
-    colframe=gray!75]
-  \fi
-  \if@enus
-    \cthnewtheorem{definition}{Definition}[coltitle=black, colback=yellow!10,
-    colframe=orange!75]
-    \cthnewtheorem{lemma}{Lemma}[coltitle=black, colback=yellow!10,
-    colframe=pink!75]
-    \cthnewtheorem{theorem}{Theorem}[coltitle=black, colback=yellow!10,
-    colframe=magenta!75]
-    \cthnewtheorem{remark}{Remark}[coltitle=black, colback=yellow!10,
-    colframe=purple!75]
-    \cthnewtheorem{corollary}{Corollary}[coltitle=black, colback=yellow!10,
-    colframe=purple!75]
-    \cthnewtheorem{proof}{Proof}[coltitle=black, colback=yellow!10,
-    colframe=lightblue!75]
-    \cthnewtheorem{example}{Example}[coltitle=black, colback=yellow!10,
-    colframe=gray!75]
-  \fi
+\RequirePackage{thmtools}
+\RequirePackage{coloredtheorem}
+\definecolor{lightblue}{RGB}{80, 80, 210}
+\if@zhcn
+  \cthnewtheorem{definition}{定义}[coltitle=black, colback=yellow!10,
+  colframe=orange!75]
+  \cthnewtheorem{lemma}{引理}[coltitle=black, colback=yellow!10,
+  colframe=pink!75]
+  \cthnewtheorem{theorem}{定理}[coltitle=black, colback=yellow!10,
+  colframe=magenta!75]
+  \cthnewtheorem{remark}{备注}[coltitle=black, colback=yellow!10,
+  colframe=purple!75]
+  \cthnewtheorem{corollary}{推论}[coltitle=black, colback=yellow!10,
+  colframe=purple!75]
+  \cthnewtheorem{proof}{证明}[coltitle=black, colback=yellow!10,
+  colframe=lightblue!75]
+  \cthnewtheorem{example}{例子}[coltitle=black, colback=yellow!10,
+  colframe=gray!75]
+\fi
+\if@enus
+  \cthnewtheorem{definition}{Definition}[coltitle=black, colback=yellow!10,
+  colframe=orange!75]
+  \cthnewtheorem{lemma}{Lemma}[coltitle=black, colback=yellow!10,
+  colframe=pink!75]
+  \cthnewtheorem{theorem}{Theorem}[coltitle=black, colback=yellow!10,
+  colframe=magenta!75]
+  \cthnewtheorem{remark}{Remark}[coltitle=black, colback=yellow!10,
+  colframe=purple!75]
+  \cthnewtheorem{corollary}{Corollary}[coltitle=black, colback=yellow!10,
+  colframe=purple!75]
+  \cthnewtheorem{proof}{Proof}[coltitle=black, colback=yellow!10,
+  colframe=lightblue!75]
+  \cthnewtheorem{example}{Example}[coltitle=black, colback=yellow!10,
+  colframe=gray!75]
 \fi
 
 % Basic packages
