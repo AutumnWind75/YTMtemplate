@@ -1,21 +1,25 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{YTMstyle}[2026/01/15 v1.0]
 
-% Language settings
+% options
 \newif\if@zhcn
 \newif\if@enus
+\newif\if@coloredtheorem
 
 \@zhcnfalse
 \@enustrue
+\@coloredtheoremfalse
 
 \DeclareOption{zh-cn}{
   \@zhcntrue
   \@enusfalse
 }
-
 \DeclareOption{en-us}{
   \@enustrue
   \@zhcnfalse
+}
+\DeclareOption{coloredtheorem}{
+  \@coloredtheoremtrue
 }
 
 \ProcessOptions\relax
@@ -45,6 +49,52 @@
     \newtheorem{definition}{Definition}[section]
     \newtheorem{example}{Example}[section]
 \fi
+
+% colored theorems
+\if@coloredtheorem
+  \RequirePackage{tcolorbox}
+  \RequirePackage{thmtools}
+  \RequirePackage{coloredtheorem}
+  \definecolor{lightblue}{RGB}{80, 80, 210}
+  \if@zhcn
+    \cthnewtheorem{definition}{定义}[coltitle=black, colback=yellow!10,
+    colframe=orange!75]
+    \cthnewtheorem{lemma}{引理}[coltitle=black, colback=yellow!10,
+    colframe=pink!75]
+    \cthnewtheorem{theorem}{定理}[coltitle=black, colback=yellow!10,
+    colframe=magenta!75]
+    \cthnewtheorem{remark}{备注}[coltitle=black, colback=yellow!10,
+    colframe=purple!75]
+    \cthnewtheorem{corollary}{推论}[coltitle=black, colback=yellow!10,
+    colframe=purple!75]
+    \cthnewtheorem{proof}{证明}[coltitle=black, colback=yellow!10,
+    colframe=lightblue!75]
+    \cthnewtheorem{example}{例子}[coltitle=black, colback=yellow!10,
+    colframe=gray!75]
+  \fi
+  \if@enus
+    \cthnewtheorem{definition}{Definition}[coltitle=black, colback=yellow!10,
+    colframe=orange!75]
+    \cthnewtheorem{lemma}{Lemma}[coltitle=black, colback=yellow!10,
+    colframe=pink!75]
+    \cthnewtheorem{theorem}{Theorem}[coltitle=black, colback=yellow!10,
+    colframe=magenta!75]
+    \cthnewtheorem{remark}{Remark}[coltitle=black, colback=yellow!10,
+    colframe=purple!75]
+    \cthnewtheorem{corollary}{Corollary}[coltitle=black, colback=yellow!10,
+    colframe=purple!75]
+    \cthnewtheorem{proof}{Proof}[coltitle=black, colback=yellow!10,
+    colframe=lightblue!75]
+    \cthnewtheorem{example}{Example}[coltitle=black, colback=yellow!10,
+    colframe=gray!75]
+  \fi
+\fi
+
+% Basic packages
+\RequirePackage[colorlinks=true, citecolor=blue]{hyperref}
+\RequirePackage[capitalize]{cleveref}
+
+\RequirePackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
 % Graphics packages
 \RequirePackage{graphicx}
