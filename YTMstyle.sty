@@ -24,6 +24,39 @@
   \RequirePackage[UTF8]{ctex}
 \fi
 
+% Page layout
+\RequirePackage[a4paper,
+    top=3cm,
+    bottom=3cm,
+    left=2cm,
+    right=2cm,
+    marginparwidth=1.75cm,
+    headheight=15.5pt,
+    headsep=12pt,
+    footskip=25pt
+]{geometry}
+
+% Header and footer
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\rightmark}
+\fancyfoot[R]{\today}
+\if@zhcn
+  \fancyfoot[L]{第\thepage 页，共\pageref*{LastPage}页}
+\else
+  \fancyfoot[L]{Page \thepage\ of \pageref*{LastPage}}
+\fi
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hrule width\headwidth height\headrulewidth \vskip 1mm}
+
+
 % Math packages
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -86,8 +119,6 @@
 % Basic packages
 \RequirePackage[colorlinks=true, citecolor=blue]{hyperref}
 \RequirePackage[capitalize]{cleveref}
-
-\RequirePackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
 % Graphics packages
 \RequirePackage{graphicx}
