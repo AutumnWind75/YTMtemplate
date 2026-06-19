@@ -1,12 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{YTMstyle}[2026/01/16 v1.0]
+\ProvidesPackage{YTMstyle}[2026/06/19 v1.2]
 
 % options
 \newif\if@zhcn
 \newif\if@enus
+\newif\if@italicdiff
 
 \@zhcnfalse
 \@enustrue
+\@italicdifffalse
 
 \DeclareOption{zh-cn}{
   \@zhcntrue
@@ -15,6 +17,9 @@
 \DeclareOption{en-us}{
   \@enustrue
   \@zhcnfalse
+}
+\DeclareOption{italicdiff}{
+  \@italicdifftrue
 }
 
 \ProcessOptions\relax
@@ -47,7 +52,7 @@
 \fancyhead[R]{\rightmark}
 \fancyfoot[R]{\today}
 \if@zhcn
-  \fancyfoot[L]{第\thepage 页，共\pageref*{LastPage}页}
+  \fancyfoot[L]{第\thepage 页，共 \pageref*{LastPage} 页}
 \else
   \fancyfoot[L]{Page \thepage\ of \pageref*{LastPage}}
 \fi
@@ -62,24 +67,33 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 \RequirePackage{amsthm}
-\RequirePackage{physics}
+\RequirePackage{mathrsfs}
+\RequirePackage{enumitem}
+\if@italicdiff
+  \RequirePackage[italicdiff]{physics}
+\else
+  \RequirePackage{physics}
+\fi
 
+% Theorem environments
 \if@zhcn
   \newtheorem{theorem}{定理}[section]
   \newtheorem{lemma}[theorem]{引理}
+  \newtheorem{proposition}[theorem]{命题}
   \newtheorem{corollary}[theorem]{推论}
-  \newtheorem{definition}{定义}[section]
-  \newtheorem{example}{例子}[section]
+  \newtheorem{definition}[theorem]{定义}
+  \newtheorem{example}[theorem]{例子}
 \fi
 \if@enus
   \newtheorem{theorem}{Theorem}[section]
   \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{proposition}[theorem]{Proposition}
   \newtheorem{corollary}[theorem]{Corollary}
-  \newtheorem{definition}{Definition}[section]
-  \newtheorem{example}{Example}[section]
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{example}[theorem]{Example}
 \fi
 
-% colored theorems
+% Colored theorems
 \RequirePackage{thmtools}
 \RequirePackage{coloredtheorem}
 \definecolor{lightblue}{RGB}{80, 80, 210}
@@ -120,7 +134,29 @@
 \RequirePackage[colorlinks=true, citecolor=blue]{hyperref}
 \RequirePackage[capitalize]{cleveref}
 
+\if@zhcn
+  \crefname{theorem}{定理}{定理}
+  \crefname{lemma}{引理}{引理}
+  \crefname{proposition}{命题}{命题}
+  \crefname{corollary}{推论}{推论}
+  \crefname{definition}{定义}{定义}
+  \crefname{example}{例}{例}
+  \crefname{remark}{备注}{备注}
+\else
+  \crefname{theorem}{Theorem}{Theorems}
+  \crefname{lemma}{Lemma}{Lemmas}
+  \crefname{proposition}{Proposition}{Propositions}
+  \crefname{corollary}{Corollary}{Corollaries}
+  \crefname{definition}{Definition}{Definitions}
+  \crefname{example}{Example}{Examples}
+  \crefname{remark}{Remark}{Remarks}
+\fi
+
 % Graphics packages
 \RequirePackage{graphicx}
+\RequirePackage{quiver}
+
+% Custom commands
+\newcommand{\RR}{\mathbb{R}}
 
 \endinput
