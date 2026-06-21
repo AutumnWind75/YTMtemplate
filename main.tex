@@ -1,5 +1,8 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage[en-us]{YTMstyle}
+\usepackage[en-us,
+    % italicdiff,               % switches the differential symbol \(\dd\) to an italic form.
+    % draft                     % enables draft mode.
+]{YTMstyle}
 
 \title{Example Document}
 \author{Tianming You}
@@ -19,7 +22,7 @@ This template currently supports two languages: \texttt{zh-cn} and \texttt{en-us
 \begin{definition}
     This is some definition.
 \end{definition}
-\begin{theorem}
+\begin{theorem}\label{thm:thm1}
     This is a theorem.
 \end{theorem}
 \begin{remark}
@@ -39,15 +42,17 @@ This template currently supports two languages: \texttt{zh-cn} and \texttt{en-us
 \begin{enumerate}
     \item \texttt{en-us} or \texttt{zh-cn}: It specifies the language the article uses. Default: \texttt{en-us}.
     \item \texttt{italicdiff}: It switches the differential symbol \(\dd\) to an italic form \(d\). Default: \texttt{None}.
+    \item \texttt{draft}: It enables draft mode, which uses the \texttt{showkeys} package. Default: \texttt{None}.
 \end{enumerate}
 
 \section{Packages Included}
 \begin{itemize}
-    \item Language and encoding: \texttt{ctex} (if \texttt{zh-cn} is enabled);
+    \item Language and encoding: \texttt{ctex} (if \texttt{zh-cn} is used);
     \item Page layout: \texttt{geometry};
     \item Header and footer: \texttt{fancyhdr}, \texttt{lastpage};
     \item Math packages: \texttt{amsmath}, \texttt{amssymb}, \texttt{amsfonts}, \texttt{amsthm}, \texttt{mathrsfs}, \texttt{physics};
     \item Formatting: \texttt{coloredtheorem}, \texttt{enumitem}, \texttt{hyperref}, \texttt{cleveref};
+    \item Draft (if \texttt{draft} is used): \texttt{showkeys}; 
     \item Graphics: \texttt{graphicx}, \texttt{quiver}.
 \end{itemize}
 

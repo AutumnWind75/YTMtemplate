@@ -5,10 +5,12 @@
 \newif\if@zhcn
 \newif\if@enus
 \newif\if@italicdiff
+\newif\if@draft
 
 \@zhcnfalse
 \@enustrue
 \@italicdifffalse
+\@draftfalse
 
 \DeclareOption{zh-cn}{
   \@zhcntrue
@@ -20,6 +22,9 @@
 }
 \DeclareOption{italicdiff}{
   \@italicdifftrue
+}
+\DeclareOption{draft}{
+  \@drafttrue
 }
 
 \ProcessOptions\relax
@@ -181,6 +186,11 @@
   \crefname{definition}{Definition}{Definitions}
   \crefname{example}{Example}{Examples}
   \crefname{remark}{Remark}{Remarks}
+\fi
+
+% Draft mode
+\if@draft
+  \RequirePackage{showkeys}
 \fi
 
 % Graphics packages
