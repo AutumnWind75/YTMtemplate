@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{YTMstyle}[2026/06/19 v1.2]
+\ProvidesPackage{YTMstyle}[2026/06/21 v1.3]
 
 % options
 \newif\if@zhcn
@@ -68,7 +68,6 @@
 \RequirePackage{amsfonts}
 \RequirePackage{amsthm}
 \RequirePackage{mathrsfs}
-\RequirePackage{enumitem}
 \if@italicdiff
   \RequirePackage[italicdiff]{physics}
 \else
@@ -77,24 +76,55 @@
 
 % Theorem environments
 \if@zhcn
+  \theoremstyle{plain}
   \newtheorem{theorem}{定理}[section]
   \newtheorem{lemma}[theorem]{引理}
   \newtheorem{proposition}[theorem]{命题}
   \newtheorem{corollary}[theorem]{推论}
+
+  \theoremstyle{definition}
   \newtheorem{definition}[theorem]{定义}
-  \newtheorem{example}[theorem]{例子}
+  \newtheorem{example}[theorem]{例}
+
+  \theoremstyle{remark}
+  \newtheorem{remark}[theorem]{注}
 \fi
 \if@enus
+  \theoremstyle{plain}
   \newtheorem{theorem}{Theorem}[section]
   \newtheorem{lemma}[theorem]{Lemma}
   \newtheorem{proposition}[theorem]{Proposition}
   \newtheorem{corollary}[theorem]{Corollary}
+
+  \theoremstyle{definition}
   \newtheorem{definition}[theorem]{Definition}
   \newtheorem{example}[theorem]{Example}
+
+  \theoremstyle{remark}
+  \newtheorem{remark}[theorem]{Remark}
 \fi
 
+\let\origremark\remark
+\let\endorigremark\endremark
+\renewenvironment{remark}[1][]{%
+  \renewcommand{\qedsymbol}{\ensuremath{\diamond}}%
+  \pushQED{\qed}%
+  \begin{origremark}[#1]%
+}{%
+  \popQED\end{origremark}%
+}
+
+\let\origexample\example
+\let\endorigexample\endexample
+\renewenvironment{example}[1][]{%
+  \renewcommand{\qedsymbol}{\ensuremath{\diamond}}%
+  \pushQED{\qed}%
+  \begin{origexample}[#1]%
+}{%
+  \popQED\end{origexample}%
+}
+
 % Colored theorems
-\RequirePackage{thmtools}
 \RequirePackage{coloredtheorem}
 \definecolor{lightblue}{RGB}{80, 80, 210}
 \if@zhcn
@@ -110,7 +140,7 @@
   colframe=purple!75]
   \cthnewtheorem{proof}{证明}[coltitle=black, colback=yellow!10,
   colframe=lightblue!75]
-  \cthnewtheorem{example}{例子}[coltitle=black, colback=yellow!10,
+  \cthnewtheorem{example}{例}[coltitle=black, colback=yellow!10,
   colframe=gray!75]
 \fi
 \if@enus
@@ -131,6 +161,7 @@
 \fi
 
 % Basic packages
+\RequirePackage{enumitem}
 \RequirePackage[colorlinks=true, citecolor=blue]{hyperref}
 \RequirePackage[capitalize]{cleveref}
 
@@ -141,7 +172,7 @@
   \crefname{corollary}{推论}{推论}
   \crefname{definition}{定义}{定义}
   \crefname{example}{例}{例}
-  \crefname{remark}{备注}{备注}
+  \crefname{remark}{注}{注}
 \else
   \crefname{theorem}{Theorem}{Theorems}
   \crefname{lemma}{Lemma}{Lemmas}
@@ -157,6 +188,9 @@
 \RequirePackage{quiver}
 
 % Custom commands
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
 
 \endinput

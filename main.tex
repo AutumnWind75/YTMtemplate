@@ -1,17 +1,61 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[en-us]{YTMstyle}
 
-\title{Test Document}
+\title{Example Document}
 \author{Tianming You}
 \date{\today}
 
 \begin{document}
 \maketitle
 
+\tableofcontents
+
+\newpage
+
+\section{Language}
+This template currently supports two languages: \texttt{zh-cn} and \texttt{en-us}.
+
+\section{Math Theorems}
+\begin{definition}
+    This is some definition.
+\end{definition}
 \begin{theorem}
-This is a theorem.
+    This is a theorem.
 \end{theorem}
-\begin{cththeorem}{YTM Theorem}
-This is also a theorem. Hi!
+\begin{remark}
+    All \texttt{amsthm} environments share the same counter.
+\end{remark}
+\begin{example}
+    All remarks and examples automatically end with \texttt{\textbackslash diamond}.
+\end{example}
+\begin{cthdefinition}{Colored Definition}
+    This is a colored definition.
+\end{cthdefinition}
+\begin{cththeorem}{Colored Theorem}
+    This is a colored theorem. Colored environments do not share the same counter.
 \end{cththeorem}
+
+\section{Options}
+\begin{enumerate}
+    \item \texttt{en-us} or \texttt{zh-cn}: It specifies the language the article uses. Default: \texttt{en-us}.
+    \item \texttt{italicdiff}: It switches the differential symbol \(\dd\) to an italic form \(d\). Default: \texttt{None}.
+\end{enumerate}
+
+\section{Packages Included}
+\begin{itemize}
+    \item Language and encoding: \texttt{ctex} (if \texttt{zh-cn} is enabled);
+    \item Page layout: \texttt{geometry};
+    \item Header and footer: \texttt{fancyhdr}, \texttt{lastpage};
+    \item Math packages: \texttt{amsmath}, \texttt{amssymb}, \texttt{amsfonts}, \texttt{amsthm}, \texttt{mathrsfs}, \texttt{physics};
+    \item Formatting: \texttt{coloredtheorem}, \texttt{enumitem}, \texttt{hyperref}, \texttt{cleveref};
+    \item Graphics: \texttt{graphicx}, \texttt{quiver}.
+\end{itemize}
+
+\section{Other Commands}
+\begin{enumerate}
+    \item \texttt{\textbackslash ZZ}: \(\mathbb Z\). \texttt{\textbackslash QQ}: \(\mathbb Q\). \texttt{\textbackslash RR}: \(\mathbb R\). \texttt{\textbackslash CC}: \(\mathbb C\).
+    \item All commands from packages included.
+\end{enumerate}
+
+
 \end{document}
